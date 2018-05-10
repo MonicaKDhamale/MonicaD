@@ -1,0 +1,79 @@
+Distilled BI Developer Tech Challenge
+
+Solutions should be submitted by returning a GitHub repo url containing the files.
+
+A. Given the subset of DoneDeal's schema below, write executable SQL queries to answer the following:
+
+  1. Determine the number of active ads on the site per day (use generate_series).
+  2. Determine the YoY growth of Beef Cattle ads in county Tipperary from 2016 to 2017 (use lag).
+
+Please answer in a single query for each question and assume read-only access to the database (ie. do not use CREATE TABLE).
+
+Assume a PostgreSQL database, server timezone is GMT
+
+Table: ads
+Column Name | Datatype                | Comment
+         id | Integer                 | Ad primary key
+category_id | Integer                 | Foreign key to category.id
+  region_id | Integer                 | Foreign key to region.id
+     create | Timestamp with timezone | When the ad was first inserted into the database
+    publish | Timestamp with timezone | When the ad was first published to the web/app
+     delete | Timestamp with timezone | When the ad was removed to the web/app
+
+Table: category
+   Column Name | Datatype     | Comment
+            id | Integer      | Category primary key
+      vertical | Varchar(100) | E.g. Motor/Property/Farming
+ main category | Varchar(100) | E.g. Cars/Commericals/Farming
+      category | Varchar(100) | E.g. Livestock
+subsubcategory | Varchar(100) | E.g. Beef Cattle
+
+Table: region
+   Column Name | Datatype     | Commment
+            id | Integer      | Region primary key
+       country | Varchar(100) | E.g. Republic of Ireland/Northern Ireland
+      province | Varchar(100) | E.g. Munster
+        county | Varchar(100) | E.g. Tipperary
+          town | Varchar(100) | E.g. Cashel
+
+Delivery format - SQL file
+
+B. Car Data
+  - Analyse the integrity of the car data.
+  - What data quality issues did you find?
+  - [Extra Credit] Write an ETL script using Python and PETL to standardise the mileage in km.
+
+Table: car_ads
+   Column Name | Datatype     | Commment
+            id | Integer      | Ad primary key
+          date | Date         | Date ad was placed on DoneDeal
+         price | Float        | Price user set
+        county | Varchar      | County of user
+          make | Varchar      | Car make
+         model | Varchar      | Car model
+          year | Varchar      | Car year from reg plate
+        colour | Varchar      | Car colour
+       mileage | Varchar      | Mileage reading from car
+   mileageType | Varchar      | Unit of mileage reading
+     engine_cc | Varchar      | Engine capacity in CC
+     body_type | Varchar      | Body style of car
+     fuel_type | Varchar      | Fuel type of car
+  transmission | Varchar      | Transmission of car
+         doors | Varchar      | Number of doors in car
+   seller_type | Varchar      | Was the ad placed by a private or professional user. feed and trader types of pro users.
+
+Useful references:
+  https://www.python.org
+  http://pandas.pydata.org
+  http://petl.readthedocs.io/en/latest/
+
+Delivery format - Jupyter notebook or Tableau workbook and Python file
+
+
+
+
+
+
+
+
+
